@@ -1,0 +1,32 @@
+version: "2"
+services:
+  users_ms:
+    build: ./users-ms
+    command: ./run.sh
+    ports:
+      - "3030:3030"
+    volumes:
+      - ./users-ms:/opt/flix-users
+    working_dir: /opt/flix-users
+    depends_on:
+      - db
+    env_file:
+      - ./dev.env
+    environment:
+      - DB_CON=postgres://postgres:password@db:5432/users_ms
+  db:
+    image: postgres:12.1-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db-scripts:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_MULTIPLE_DATABASES=users_ms
+  web:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - users_ms
