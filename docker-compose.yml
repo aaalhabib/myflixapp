@@ -2,6 +2,7 @@ version: "2"
 services:
   ui_ms:
     build: ./ui-ms
+    command: ./run.sh
     ports:
       - "8080:8080"
     volumes:
