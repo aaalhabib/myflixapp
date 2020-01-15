@@ -45,7 +45,10 @@ module.exports = function (app) {
             table.timestamp("created_at").defaultTo(knex.raw('now()'));
             table.timestamp("updated_at").defaultTo(knex.raw('now()'));
       
-          }); 
+          })
+          .then(()=>console.log('users created'))
+          .catch(err => console.error(err)) 
+         
       }
   })
     .catch(e => console.error('Error creating users table', e)); // eslint-disable-line no-console
