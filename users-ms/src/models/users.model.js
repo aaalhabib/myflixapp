@@ -11,13 +11,15 @@ class users extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['password','name', 'email'],
+      required: ['password','name', 'email','security_question','security_answer'],
 
       properties: {
       
         password: 'string',
         name: 'string',
         email: 'string',
+        security_question:'string',
+        security_answe: 'string',
       
       }
     };
@@ -47,7 +49,7 @@ module.exports = function (app) {
       
           })
           .then(()=>console.log('users created'))
-          .catch(err => console.error(err)) 
+          .catch(err => console.log(err)) 
          
       }
   })
