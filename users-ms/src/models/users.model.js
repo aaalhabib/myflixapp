@@ -37,15 +37,15 @@ module.exports = function (app) {
     if (!exists) {
       db.schema.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
       .createTable("users", table => {
-        table.uuid("id").primary().notNullable().defaultTo(knex.raw('uuid_generate_v4()'))
+        table.uuid("id").primary().notNullable().defaultTo(db.raw('uuid_generate_v4()'))
         table.text("name");
         table.text("email").unique();
         table.text("password").notNullable();
         table.text("security_question");
         table.text("security_answer");
   
-        table.timestamp("created_at").defaultTo(knex.raw('now()'));
-        table.timestamp("updated_at").defaultTo(knex.raw('now()'));
+        table.timestamp("created_at").defaultTo(db.raw('now()'));
+        table.timestamp("updated_at").defaultTo(db.raw('now()'));
   
       })
       .then(()=>console.log('users created'))
