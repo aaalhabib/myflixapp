@@ -23,7 +23,7 @@ services:
     env_file:
       - ./dev.env
     environment:
-      - DB_CON=postgres://postgres:password@db:5432/users_ms
+      - DB_CON=postgres://postgres:@db:5432/users_ms
   db:
     image: postgres:12.1-alpine
     ports:
