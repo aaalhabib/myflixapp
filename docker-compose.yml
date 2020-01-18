@@ -29,7 +29,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_MULTIPLE_DATABASES=users_ms
+      - POSTGRES_MULTIPLE_DATABASES=users_ms,payments_ms
     volumes:
       - $volume_path/db-scripts:/docker-entrypoint-initdb.d
   web:
