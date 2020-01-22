@@ -89,7 +89,8 @@ export default {
   methods: {
     async registerCard() {
       try {
-        let card = await api.service("api/payments-ms/cards").create(this.card);
+        this.card.user_id = this.$store.state.auth.user.id;
+        let card = await api.service("api/payment-ms/cards").create(this.card);
         this.$store.state.user.subscription_expiry_date =
           card.subscription_expiry_date;
 

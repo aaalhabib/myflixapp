@@ -21,7 +21,7 @@
     "eslint": "eslint src/. test/. --config .eslintrc.json",
     "dev": "nodemon src/",
     "start": "node src/"
-   },
+  },
   "dependencies": {
     "@feathersjs/configuration": "^4.5.0",
     "@feathersjs/errors": "^4.5.0",
@@ -29,6 +29,12 @@
     "@feathersjs/feathers": "^4.5.0",
     "@feathersjs/transport-commons": "^4.5.0",
     "cors": "^2.8.5",
+    "feathers-objection": "^4.7.0",
+    "knex": "^0.20.8",
+    "moment": "^2.24.0",
+    "objection": "^1.6.11",
+    "pg": "^7.17.1",
+    "validatorjs": "^3.18.1",
     "winston": "^3.2.1"
   },
   "devDependencies": {

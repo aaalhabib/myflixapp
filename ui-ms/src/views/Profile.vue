@@ -40,7 +40,7 @@ export default {
     async fetchInfo() {
       const { user } = await api.reAuthenticate();
 
-      let cards_info = await api.service("api/payments-ms/cards").find({
+      let cards_info = await api.service("api/payment-ms/cards").find({
         user_id: user.id
       });
       console.log(cards_info);
