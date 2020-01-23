@@ -28,22 +28,6 @@ module.exports = function (app) {
     };
   
   }
-    const db = app.get('knex');
-
-  db.schema.hasTable('categories').then(exists => {
-    if (!exists) {
-      db.schema.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
-        .createTable("categories", table => {
-          table.increments("id");
-          table.text("title").unique();
-        })
-      
-        .then(() => console.log('Created categories table')) // eslint-disable-line no-console
-        .catch(e => console.error('Error creating categories table', e)); // eslint-disable-line no-console
-    }
-  })
-    .catch(e => console.error('Error creating categories table', e)); // eslint-disable-line no-console
-
   return Category;
 };
 
