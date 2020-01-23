@@ -19,9 +19,9 @@
       <a class="hover:text-white px-2 text-black font-semibold" href="#">
         Categories
       </a>
-      <a class="hover:text-white px-2 text-black font-semibold" href="#">
+      <router-link to="/favorites" class="hover:text-white px-2 text-black font-semibold" >
         My List
-      </a>
+      </router-link>
       <input
         class="text-black form-input mx-10 focus:shadow-none focus:border-gray-700 border border-gray-500"
         v-model="search"

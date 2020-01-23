@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen" id="app">
     <f-nav />
-    <router-view />
+    <router-view :key="$route.fullPath" />
   </div>
 </template>
 <script>

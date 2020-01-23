@@ -9,6 +9,10 @@ import Profile from "../views/Profile.vue";
 import PasswordResetEmail from "../views/PasswordResetEnterEmail.vue";
 import PasswordResetSecurityQuestion from "../views/PasswordResetCheckQuestion";
 import PasswordReset from "../views/PasswordReset";
+import Video from "../views/Video";
+import Category from "../views/Category";
+import RegisterVideo from "../views/RegisterVideo";
+import Favorites from "../views/Favorites";
 
 Vue.use(VueRouter);
 
@@ -18,6 +22,22 @@ const routes = [
     name: "home",
     component: Home
   },
+  {
+    path: "/favorites",
+    name: "favorites",
+    component: Favorites
+  },
+  {
+    path: "/category",
+    name: "category",
+    component: Category
+  },
+  {
+    path: "/videos/create",
+    name: "video-register",
+    component: RegisterVideo
+  },
+  { path: "/videos/:id", name: "video-details", component: Video },
   {
     path: "/profile",
     name: "profile",
@@ -61,7 +81,6 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   let token = localStorage.getItem("auth");
-  console.log("token", token);
   let unProtected = [
     "register",
     "login",
@@ -70,8 +89,6 @@ router.beforeEach((to, from, next) => {
     "password-reset-security-question",
     "password-reset-reset-form"
   ];
-  console.log("to", to.name);
-  // console.log(from);
   if (!unProtected.includes(to.name) && !token) {
     return next("/login");
   }

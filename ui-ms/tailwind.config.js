@@ -5,7 +5,5 @@ module.exports = {
   variants: {
     outline: ["focus", "active"]
   },
-  plugins: [
-    require("@tailwindcss/custom-forms"),
-  ]
+  plugins: [require("@tailwindcss/custom-forms")]
 };

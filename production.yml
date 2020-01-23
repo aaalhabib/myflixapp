@@ -1,0 +1,4 @@
+services:
+    web:
+        volumes:
+             - $volume_path/ui-ms/dist:/srv/www/static

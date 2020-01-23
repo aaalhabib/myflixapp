@@ -27,7 +27,7 @@ class Card extends Model {
 }
 
 module.exports = function (app) {
-  const db = app.get('knex');
+  const db = app.get('knex'); 
 
   db.schema.hasTable('cards').then(exists => {
     if (!exists) {

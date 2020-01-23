@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 <template>
   <div class="mt-10 flex flex-col bg-gray-900 text-white items-center">
     <div class="flex w-1/3 justify-center items-center">
@@ -16,13 +14,15 @@ import moment from 'moment';
     </div>
     <div class="flex row justify-between w-1/3">
       <span>Subscribtion Expire Date</span>
-      <span>{{ user.subscription_expiry_date }}</span>
+      <span>{{ format(user.subscription_expiry_date) }}</span>
     </div>
   </div>
 </template>
 
 <script>
 import api from "../plugins/feathers-client";
+import moment from "moment";
+
 export default {
   name: "Profile",
   async created() {
