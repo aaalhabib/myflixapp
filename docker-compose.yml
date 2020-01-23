@@ -36,6 +36,19 @@ services:
     environment:
       - DB_CON=postgres://postgres:password@db:5432/videos_ms
       - NODE_ENV=$APP_ENV
+  rates_ms:
+    build: ./rates-ms
+    command: ./run.$APP_ENV.sh
+    ports:
+      - "3033:3033"
+    volumes:
+      - $volume_path/rates-ms:/opt/flix-rates
+    working_dir: /opt/flix-rates
+    depends_on:
+      - db
+    environment:
+      - DB_CON=postgres://postgres:password@db:5432/rates_ms
+      - NODE_ENV=$APP_ENV
   payment_ms:
     build: ./payment-ms
     command: ./run.$APP_ENV.sh
@@ -54,7 +67,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_MULTIPLE_DATABASES=users_ms,payment_ms,videos_ms
+      - POSTGRES_MULTIPLE_DATABASES=users_ms,payment_ms,videos_ms,rates_ms
     volumes:
       - $volume_path/db-scripts:/docker-entrypoint-initdb.d
   web:
@@ -68,3 +81,4 @@ services:
       - ui_ms
       - payment_ms
       - videos_ms
+      - rates_ms

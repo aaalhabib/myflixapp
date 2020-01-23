@@ -1,0 +1,54 @@
+{
+  "name": "rates-ms",
+  "description": "microservice for rates on movies (likes and dislikes)",
+  "version": "0.0.0",
+  "homepage": "",
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "aaalhabib",
+    "email": "aaalhabib@outlook.com"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/",
+    "config": "config/"
+  },
+  "engines": {
+    "node": "^12.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "scripts": {
+    "test": "npm run eslint && npm run jest",
+    "eslint": "eslint src/. test/. --config .eslintrc.json",
+    "dev": "nodemon src/",
+    "start": "node src/",
+    "jest": "jest  --forceExit"
+  },
+  "dependencies": {
+    "@feathersjs/configuration": "^4.5.0",
+    "@feathersjs/errors": "^4.5.0",
+    "@feathersjs/express": "^4.5.0",
+    "@feathersjs/feathers": "^4.5.0",
+    "@feathersjs/transport-commons": "^4.5.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "feathers-objection": "^4.7.0",
+    "helmet": "^3.21.2",
+    "knex": "^0.20.8",
+    "objection": "^1.6.11",
+    "pg": "^7.17.1",
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "eslint": "^6.8.0",
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2"
+  }
+}
