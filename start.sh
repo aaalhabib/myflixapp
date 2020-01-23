@@ -1,3 +1,4 @@
+#!/bin/bash
 if [[ $APP_ENV == 'production' ]]; then
 export volume_path=/var/lib/docker/volumes/jenkins_home/_data/workspace/myflixapp
 docker-compose --no-ansi down 
