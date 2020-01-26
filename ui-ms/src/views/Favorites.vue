@@ -73,7 +73,9 @@ export default {
           }
         });
         this.videos = this.videos.filter(video => video.id != id);
-      } catch (exp) {}
+      } catch (exp) {
+        console.log(exp);
+      }
     },
     url(path) {
       return `/uploads/${path}`;

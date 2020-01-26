@@ -80,11 +80,19 @@ export default {
         });
         // set update if count > 0
         if (total > 0) {
-          await api.service("api/watches-ms/incompletes").patch(null, {
-            paused_at: Math.floor(this.player.currentTime),
-            user_id: this.user.id,
-            video_id: this.video.id
+          let res = await api.service("api/watches-ms/incompletes").find({
+            query: {
+              user_id: this.user.id,
+              video_id: this.video.id
+            }
           });
+          await api
+            .service("api/watches-ms/incompletes")
+            .patch(res.data[0].id, {
+              paused_at: Math.floor(this.player.currentTime),
+              user_id: this.user.id,
+              video_id: this.video.id
+            });
         } else {
           // else create new record
           await api.service("api/watches-ms/incompletes").create({

@@ -92,7 +92,9 @@ export default {
               }
             });
         }
-      } catch (exp) {}
+      } catch (exp) {
+        console.log(exp);
+      }
     }
   }
 };
