@@ -5,13 +5,14 @@
     </div>
     <form class="pb-6 h-full text-black w-1/3 flex flex-col">
       <label class="block mt-2">
-        <span class="text-gray-700">number</span>
+        <span class="text-gray-700"> Card Number</span>
         <input
           type="number"
           class="form-input w-full"
-          placeholder="card number"
+          placeholder="XXXX-XXXX-XXXX-XXXX"
           id="name"
           v-model="card.number"
+          :maxlength="max"
         />
         <div
           class="error-message"
@@ -20,10 +21,10 @@
         />
       </label>
       <label class="block mt-2">
-        <span class="text-gray-700">expiry year</span>
+        <span class="text-gray-700">Expiry Year</span>
         <input
           class="form-input w-full"
-          placeholder="card expiry year"
+          placeholder="Enter the expity year"
           id="expiry_year"
           v-model.number="card.expiry_year"
         />
@@ -34,10 +35,10 @@
         />
       </label>
       <label class="block mt-2">
-        <span class="text-gray-700">expiry month</span>
+        <span class="text-gray-700">Expiry Month</span>
         <input
           class="form-input w-full"
-          placeholder="expiry month"
+          placeholder="Enter the expiry month"
           id="expiry_month"
           v-model.number="card.expiry_month"
         />
@@ -49,10 +50,10 @@
       </label>
 
       <label class="block mt-2">
-        <span class="text-gray-700">cvc</span>
+        <span class="text-gray-700">CVC</span>
         <input
           class="form-input w-full"
-          placeholder="add cvc"
+          placeholder="Add the three digit CVC"
           id="cvc"
           v-model.number="card.cvc"
         />

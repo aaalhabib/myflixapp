@@ -8,7 +8,7 @@ const {
 
 module.exports = function(app) {
   const options = {
-    Model: Video(app),
+    Model: Video,
     paginate: app.get('paginate')
   };
 

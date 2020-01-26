@@ -3,7 +3,7 @@
     <h1 class="text-2xl">Favorites</h1>
     <div class="flex flex-wrap flex-row">
       <div
-        class="relative bg-red-300"
+        class="relative m-4 bg-red-300"
         style="height: 15em; width: 12em; cursor: pointer"
         :key="video.id"
         v-for="video in videos"
@@ -16,7 +16,7 @@
         </button>
         <img
           @click="goToVideosPage(video.id)"
-          class="absolute h-full"
+          class="static w-full h-full"
           :src="url(video.poster_path)"
         />
         <p

@@ -19,7 +19,7 @@ module.exports = function (app) {
     static relationMappings = {
       videos: {
         relation: Model.HasManyRelation,
-        modelClass: Video(app),
+        modelClass: Video,
         join: {
           from: "categories.title",
           to: "videos.category"

@@ -6,5 +6,6 @@ docker-compose --no-ansi -f docker-compose.yml -f production.yml up --no-color -
 docker-compose  logs --no-color 
 else
 export volume_path=./
+docker-compose down
 docker-compose up
 fi

@@ -62,12 +62,25 @@ services:
     environment:
       - DB_CON=postgres://postgres:password@db:5432/payment_ms
       - NODE_ENV=$APP_ENV
+  watches_ms:
+    build: ./watches-ms
+    command: ./run.$APP_ENV.sh
+    ports:
+      - "3034:3034"
+    volumes:
+      - $volume_path/watches-ms:/opt/flix-watches
+    working_dir: /opt/flix-watches
+    depends_on:
+      - db
+    environment:
+      - DB_CON=postgres://postgres:password@db:5432/watches_ms
+      - NODE_ENV=$APP_ENV
   db:
     image: postgres:12.1-alpine
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_MULTIPLE_DATABASES=users_ms,payment_ms,videos_ms,rates_ms
+      - POSTGRES_MULTIPLE_DATABASES=users_ms,payment_ms,videos_ms,rates_ms,watches_ms
     volumes:
       - $volume_path/db-scripts:/docker-entrypoint-initdb.d
   web:
@@ -82,3 +95,4 @@ services:
       - payment_ms
       - videos_ms
       - rates_ms
+      - watches_ms

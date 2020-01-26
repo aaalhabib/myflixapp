@@ -2,7 +2,7 @@
   <div v-if="user">
     <div class="p-5" v-if="incompletes.videos.length">
       <div>
-        <h1 class="font-bold text-2xl">Incompletes</h1>
+        <h1 class="font-bold text-2xl">Continue Watching</h1>
         <category-slide :category="incompletes" />
       </div>
     </div>
@@ -13,20 +13,31 @@
     </div>
   </div>
   <div
-    class="flex flex-col content-center items-center justify-end h-64"
+    class="flex flex-col content-center items-center justify-end h-full"
     v-else
   >
-    <div class="text-center font-semibold centered text-4xl text-white block">
+    <div
+      class="text-center font-semibold h-1/2 mt-16 centered text-4xl text-white block"
+    >
       Unlimited movies to watch <br />
-      anywhere and any time
+      anywhere and anytime
     </div>
     <br />
-    <router-link
-      class="cursor-pointer hover:bg-red-700 bg-orange-700 py-3 px-5 rounded-full text-white text-2xl"
-      :to="{ path: '/register' }"
-    >
-    </router-link>
-    Try it now!
+    <div class="h-full ">
+      <router-link
+        class="cursor-pointer hover:bg-red-700 bg-orange-700 py-3 px-5 rounded-full text-white text-2xl"
+        :to="{ path: '/register' }"
+        >Try it now!
+      </router-link>
+    </div>
+    <div class=" absolute right-1 buttom-1">
+      All contents in this webapp are taken from Youtube.com(videos) and
+      Google.com(movie details). Habib
+    </div>
+    <!-- <img
+      class="flex bg-local w-full h-full"
+      src="../assets/background/bg.jpg"
+    /> -->
   </div>
 </template>
 
@@ -70,15 +81,17 @@ export default {
           }
         });
         let ids = res.data.map(({ video_id }) => video_id);
-        this.incompletes.videos = await api
-          .service("api/videos-ms/videos")
-          .find({
-            query: {
-              id: {
-                $in: ids
+        if (ids.length > 0) {
+          this.incompletes.videos = await api
+            .service("api/videos-ms/videos")
+            .find({
+              query: {
+                id: {
+                  $in: ids
+                }
               }
-            }
-          });
+            });
+        }
       } catch (exp) {}
     }
   }
