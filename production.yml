@@ -2,4 +2,4 @@ version: "2"
 services:
     web:
         volumes:
-             - /var/jenkins_home/workspace/myflixapp/ui-ms/dist:/srv/www/static
+             - $volume_path/ui-ms/dist:/srv/www/static
