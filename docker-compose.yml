@@ -75,6 +75,30 @@ services:
     environment:
       - DB_CON=postgres://postgres:password@db:5432/watches_ms
       - NODE_ENV=$APP_ENV
+  recommendations_ms:
+    build: ./recommendations-ms
+    command: ./run.$APP_ENV.sh
+    ports:
+      - "3035:3035"
+    volumes:
+      - $volume_path/recommendations-ms:/opt/flix-recommendations
+    working_dir: /opt/flix-recommendations
+    depends_on:
+      - graph_db
+    environment:
+      - GDB_CON=bolt://graph_db:7687
+      - GDB_USER=neo4j
+      - GDB_PASS=secret
+      - NODE_ENV=$APP_ENV
+  graph_db:
+    image: neo4j:4.0
+    volumes:
+      - $volume_path/graph-data:/data
+    ports:
+      - "7475:7474"
+      - "7688:7687"
+    environment:
+      - NEO4J_AUTH=neo4j/secret
   db:
     image: postgres:12.1-alpine
     ports:
@@ -97,3 +121,4 @@ services:
       - videos_ms
       - rates_ms
       - watches_ms
+      - recommendations_ms

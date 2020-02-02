@@ -9,12 +9,18 @@
     >
       <span class=" text-red-700">MyFlix</span>
     </h1>
-    <div v-if="user" class="flex mx-4 -mb-1 items-center ">
+    <div v-if="user" class="flex mx-4 -mb-1 items-center w-1/3">
       <router-link
         class="hover:text-red-700 px-2 text-white font-semibold"
         to="/"
       >
         Home
+      </router-link>
+      <router-link
+        class="hover:text-red-700 px-2 text-white font-semibold"
+        to="/recommendations"
+      >
+        Recommendations
       </router-link>
       <router-link
         to="/favorites"

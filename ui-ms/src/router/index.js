@@ -13,6 +13,11 @@ import Video from "../views/Video";
 import Category from "../views/Category";
 import RegisterVideo from "../views/RegisterVideo";
 import Favorites from "../views/Favorites";
+import Friends from "../views/Friends";
+import Recommendations from "../views/Recommendations";
+
+import Store from "../store";
+import api from "../plugins/feathers-client";
 
 Vue.use(VueRouter);
 
@@ -59,6 +64,16 @@ const routes = [
     component: PasswordResetEmail
   },
   {
+    path: "/recommendations",
+    name: "recommendations",
+    component: Recommendations
+  },
+  {
+    path: "/friends",
+    name: "friends",
+    component: Friends
+  },
+  {
     path: "/register",
     name: "register",
     component: Register
@@ -79,7 +94,7 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   let token = localStorage.getItem("auth");
   let unProtected = [
     "register",
@@ -95,6 +110,12 @@ router.beforeEach((to, from, next) => {
 
   if (to.name == "login" && token) {
     return next("/");
+  }
+  let flix = JSON.parse(localStorage.getItem("myflix"));
+  if (token && !flix) {
+    let res = await api.reAuthenticate(true);
+    Store.state.auth.user = res.user;
+    Store.state.auth.token = res.accessToken;
   }
   next();
 });

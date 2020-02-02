@@ -92,7 +92,7 @@ export default {
       try {
         this.card.user_id = this.$store.state.auth.user.id;
         let card = await api.service("api/payment-ms/cards").create(this.card);
-        this.$store.state.user.subscription_expiry_date =
+        this.$store.state.auth.user.subscription_expiry_date =
           card.subscription_expiry_date;
 
         this.$router.push({ path: "/" });

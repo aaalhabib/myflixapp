@@ -19,6 +19,9 @@
       <router-link class="drop-link" to="/profile">
         Account
       </router-link>
+      <router-link class="drop-link" to="/friends">
+        Friends
+      </router-link>
       <a class="drop-link" @click.prevent="signOut()">
         Sign Out
       </a>

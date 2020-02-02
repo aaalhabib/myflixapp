@@ -3,7 +3,10 @@
     @click="rate()"
     :class="{ 'bg-red-200': rated }"
     :style="`cursor: ${rated ? 'normal' : 'pointer'}`"
-  >
+  >   
+   <strong class="block text-black" style="text-align: center">
+      {{ count > 0 ? count : " " }}
+    </strong>
     <svg
       class="h-5 w-5"
       enable-background="new 0 0 24 24"
@@ -34,9 +37,17 @@ export default {
       }
     });
     this.rated = res.total > 0 ? true : false;
+    res = await api.service("api/rates-ms/dislikes").find({
+      query: {
+        video_id: this.videoId,
+        $limit: 0
+      }
+    });
+    this.count = res.total;
   },
   data() {
     return {
+      count:0,
       rated: false
     };
   },

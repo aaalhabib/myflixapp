@@ -104,7 +104,6 @@ export default {
       try {
         let user = await api.service("api/users-ms/users").create(this.user);
         console.log(user);
-        this.$store.state.user = user;
         let res = await api.authenticate({
           strategy: "local",
           email: user.email,

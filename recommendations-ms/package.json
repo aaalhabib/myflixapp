@@ -1,0 +1,41 @@
+{
+  "name": "recommendations-ms",
+  "description": "the recommendation engine microservice for my flix app using neo4j graph db",
+  "version": "0.0.0",
+  "homepage": "",
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "aaalhabib",
+    "email": "aaalhabib@outlook.com"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "config": "config/"
+  },
+  "engines": {
+    "node": "^12.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "scripts": {
+    "dev": "nodemon src/",
+    "start": "node src/"
+  },
+  "dependencies": {
+    "@feathersjs/configuration": "^4.5.0",
+    "@feathersjs/errors": "^4.5.0",
+    "@feathersjs/express": "^4.5.0",
+    "@feathersjs/feathers": "^4.5.0",
+    "@feathersjs/transport-commons": "^4.5.0",
+    "cors": "^2.8.5",
+    "neo4j-driver": "^4.0.1",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

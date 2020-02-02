@@ -4,6 +4,9 @@
     @click="rate()"
     :style="`cursor: ${rated ? 'normal' : 'pointer'}`"
   >
+    <strong class="block text-black" style="text-align: center">
+      {{ count > 0 ? count : " " }}
+    </strong>
     <svg class="h-5 w-5" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
       <path
         d="m0 1v8c0 .552246.447693 1 1 1h3v-10h-3c-.552307 0-1 .447693-1 1z"
@@ -31,9 +34,17 @@ export default {
       }
     });
     this.rated = res.total > 0 ? true : false;
+    res = await api.service("api/rates-ms/likes").find({
+      query: {
+        video_id: this.videoId,
+        $limit: 0
+      }
+    });
+    this.count = res.total;
   },
   data() {
     return {
+      count:0,
       rated: false
     };
   },

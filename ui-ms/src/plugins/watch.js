@@ -45,6 +45,7 @@ export default {
         if (current === duration) {
           setTimeout(async () => {
             await this.videoCompletedAPI();
+            await this.addRecommendationAPI();
           }, 100);
         }
       });
@@ -53,6 +54,16 @@ export default {
       try {
         await api.service("api/watches-ms/incompletes").remove(null, {
           query: { user_id: this.user.id, video_id: this.video.id }
+        });
+      } catch (exp) {
+        console.log(exp);
+      }
+    },
+    async addRecommendationAPI() {
+      try {
+        await api.service("api/recommendations-ms/recommendations").create({
+          user: this.user,
+          video: this.video
         });
       } catch (exp) {
         console.log(exp);
@@ -80,19 +91,11 @@ export default {
         });
         // set update if count > 0
         if (total > 0) {
-          let res = await api.service("api/watches-ms/incompletes").find({
-            query: {
-              user_id: this.user.id,
-              video_id: this.video.id
-            }
+          await api.service("api/watches-ms/incompletes").patch(null, {
+            paused_at: Math.floor(this.player.currentTime),
+            user_id: this.user.id,
+            video_id: this.video.id
           });
-          await api
-            .service("api/watches-ms/incompletes")
-            .patch(res.data[0].id, {
-              paused_at: Math.floor(this.player.currentTime),
-              user_id: this.user.id,
-              video_id: this.video.id
-            });
         } else {
           // else create new record
           await api.service("api/watches-ms/incompletes").create({
