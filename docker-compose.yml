@@ -109,11 +109,6 @@ services:
       - $volume_path/db-scripts:/docker-entrypoint-initdb.d
   web:
     image: nginx:stable-alpine
-    command: bash -c "
-        chown -R root /srv/www/static 
-        && find /srv/www/static -type d | xargs chmod +xr 
-        && find /srv/www/static -type f | xargs chmod +r
-      "
     ports:
       - "80:80"
     volumes:
