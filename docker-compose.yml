@@ -109,6 +109,7 @@ services:
       - $volume_path/db-scripts:/docker-entrypoint-initdb.d
   web:
     image: nginx:stable-alpine
+    command: ./nginx.$APP_ENV.sh
     ports:
       - "80:80"
     volumes:
