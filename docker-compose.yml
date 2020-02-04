@@ -91,7 +91,7 @@ services:
       - GDB_PASS=secret
       - NODE_ENV=$APP_ENV
   graph_db:
-   image: neo4j:4.0
+    image: neo4j:4.0
     ports:
       - "7475:7474"
       - "7688:7687"
