@@ -7,4 +7,7 @@ module.exports = function(app) {
   );
 
   app.set("neo4j", driver);
+  const session = driver.session();
+  session.run('CREATE CONSTRAINT ON (n:User) ASSERT n.id IS UNIQUE;');
+  session.close();  
 };
