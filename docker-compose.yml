@@ -99,7 +99,7 @@ services:
       - NEO4J_AUTH=neo4j/secret
     volumes:
       - type: bind
-        source: /home/g2393946/graphData
+        source: ./graphData
         target: /data
   db:
     image: postgres:12.1-alpine
