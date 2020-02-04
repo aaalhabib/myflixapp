@@ -92,7 +92,7 @@ services:
       - NODE_ENV=$APP_ENV
   graph_db:
     image: neo4j:4.0
-    command: ./neo4jstart.sh
+    command: $volume_path/neo4jstart.sh
     ports:
       - "7475:7474"
       - "7688:7687"
