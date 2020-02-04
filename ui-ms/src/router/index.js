@@ -15,6 +15,8 @@ import RegisterVideo from "../views/RegisterVideo";
 import Favorites from "../views/Favorites";
 import Friends from "../views/Friends";
 import Recommendations from "../views/Recommendations";
+import Search from "../views/Search";
+
 
 import Store from "../store";
 import api from "../plugins/feathers-client";
@@ -87,6 +89,11 @@ const routes = [
     path: "/subscribe",
     name: "subscribe",
     component: Subscribe
+  },
+  {
+    path: "/search",
+    name: "search",
+    component: Search
   }
 ];
 

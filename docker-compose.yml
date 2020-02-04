@@ -92,12 +92,15 @@ services:
       - NODE_ENV=$APP_ENV
   graph_db:
     image: neo4j:4.0
-    #command: $volume_path/neo4jstart.sh
     ports:
       - "7475:7474"
       - "7688:7687"
     environment:
       - NEO4J_AUTH=neo4j/secret
+    volumes:
+      - type: bind
+        source: /home/g2393946/graphData
+        target: /data
   db:
     image: postgres:12.1-alpine
     ports:
