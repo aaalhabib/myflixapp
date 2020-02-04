@@ -1,6 +1,6 @@
 const neo4j = require("neo4j-driver");
 
-module.exports = function(app) {
+module.exports = async function(app) {
   const driver = neo4j.driver(
     process.env.GDB_CON,
     neo4j.auth.basic(process.env.GDB_USER, process.env.GDB_PASS)
@@ -8,6 +8,6 @@ module.exports = function(app) {
 
   app.set("neo4j", driver);
   const session = driver.session();
-  session.run('CREATE CONSTRAINT ON (n:User) ASSERT n.id IS UNIQUE;');
-  session.close();  
+  await session.run('CREATE CONSTRAINT ON (n:User) ASSERT n.id IS UNIQUE;');
+  await session.close();  
 };
