@@ -6,11 +6,7 @@ import Register from "../views/Register.vue";
 import Subscribe from "../views/Subscribe.vue";
 import Login from "../views/Login.vue";
 import Profile from "../views/Profile.vue";
-import PasswordResetEmail from "../views/PasswordResetEnterEmail.vue";
-import PasswordResetSecurityQuestion from "../views/PasswordResetCheckQuestion";
-import PasswordReset from "../views/PasswordReset";
 import Video from "../views/Video";
-import Category from "../views/Category";
 import RegisterVideo from "../views/RegisterVideo";
 import Favorites from "../views/Favorites";
 import Friends from "../views/Friends";
@@ -33,11 +29,6 @@ const routes = [
     path: "/favorites",
     name: "favorites",
     component: Favorites
-  },
-  {
-    path: "/category",
-    name: "category",
-    component: Category
   },
   {
     path: "/videos/create",
