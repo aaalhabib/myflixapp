@@ -116,7 +116,7 @@ services:
     volumes:
       - $volume_path/nginx.$APP_ENV.conf:/etc/nginx/conf.d/default.conf
       - type: bind
-        source: $volume_path/ui-ms/dist
+        source: /var/lib/docker/volumes/jenkins_home/_data/workspace/myflixapp/ui-ms/dist
         target: /srv/www/static
     depends_on:
       - users_ms
