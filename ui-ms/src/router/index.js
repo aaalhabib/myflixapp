@@ -11,7 +11,6 @@ import RegisterVideo from "../views/RegisterVideo";
 import Favorites from "../views/Favorites";
 import Friends from "../views/Friends";
 import Recommendations from "../views/Recommendations";
-import Search from "../views/Search";
 
 
 import Store from "../store";
@@ -66,11 +65,6 @@ const routes = [
     name: "subscribe",
     component: Subscribe
   },
-  {
-    path: "/search",
-    name: "search",
-    component: Search
-  }
 ];
 
 const router = new VueRouter({
