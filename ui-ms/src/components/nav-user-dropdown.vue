@@ -1,6 +1,7 @@
 <template>
   <div
     :class="{ 'text-black': dropdown }"
+    style="z-index: 1000"
     class="relative flex flex-col items-center cursor-pointer hover:text-red-700"
   >
     <a class="absolute w-40 -mt-3 right-0" @click="dropdown = !dropdown">{{

@@ -34,10 +34,6 @@
       All contents in this webapp are taken from Youtube.com(videos) and
       Google.com(movie details). Habib
     </div>
-    <!-- <img
-      class="flex bg-local w-full h-full"
-      src="../assets/background/bg.jpg"
-    /> -->
   </div>
 </template>
 

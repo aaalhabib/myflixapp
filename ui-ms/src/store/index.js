@@ -28,11 +28,6 @@ export default new Vuex.Store({
     SET_TOKEN(state, info) {
       state.auth.token = info;
     },
-    SET_PASSWORD_RESET_EMAIL_INFO(state, value) {
-      state.password_reset_info = value;
-    }
   },
-  actions: {},
-  modules: {},
   plugins: [vuexLocal.plugin]
 });

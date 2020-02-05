@@ -51,21 +51,6 @@ const routes = [
     component: Profile
   },
   {
-    path: "/password-reset/reset-form",
-    name: "password-reset-reset-form",
-    component: PasswordReset
-  },
-  {
-    path: "/password-reset/security-question",
-    name: "password-reset-security-question",
-    component: PasswordResetSecurityQuestion
-  },
-  {
-    path: "/password-reset/email",
-    name: "password-reset-email",
-    component: PasswordResetEmail
-  },
-  {
     path: "/recommendations",
     name: "recommendations",
     component: Recommendations
@@ -106,10 +91,7 @@ router.beforeEach(async (to, from, next) => {
   let unProtected = [
     "register",
     "login",
-    "home",
-    "password-reset-email",
-    "password-reset-security-question",
-    "password-reset-reset-form"
+    "home"
   ];
   if (!unProtected.includes(to.name) && !token) {
     return next("/login");
@@ -118,11 +100,11 @@ router.beforeEach(async (to, from, next) => {
   if (to.name == "login" && token) {
     return next("/");
   }
-  let flix = JSON.parse(localStorage.getItem("myflix"));
-  if (token && !flix) {
+  if (token) {
     let res = await api.reAuthenticate(true);
     Store.state.auth.user = res.user;
     Store.state.auth.token = res.accessToken;
+        
   }
   next();
 });

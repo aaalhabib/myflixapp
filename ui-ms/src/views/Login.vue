@@ -36,12 +36,6 @@
         >
           login
         </button>
-        <router-link
-          to="password-reset/email"
-          class="mt-2 w-1/2 inline-block text-center py-3 px-2 hover:text-red-700 text-white"
-        >
-          forgot password ?
-        </router-link>
       </div>
     </form>
   </div>

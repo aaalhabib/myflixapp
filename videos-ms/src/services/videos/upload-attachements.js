@@ -4,7 +4,7 @@ const { BadRequest } = require('@feathersjs/errors');
 
 let uploadDir = path.resolve(__dirname + '../../../../public/uploads');
 
-// store file on memory to use it later
+// store file on disk to use it later
 const uploadDisk = multer.diskStorage({
   destination: function(req, file, cb) {
     cb(null, uploadDir);
