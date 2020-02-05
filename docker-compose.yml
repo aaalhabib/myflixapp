@@ -105,10 +105,7 @@ services:
     image: postgres:12.1-alpine
     ports:
       - "5432:5432"
-    #environment:
-      #- POSTGRES_MULTIPLE_DATABASES=users_ms,payment_ms,videos_ms,rates_ms,watches_ms
     volumes:
-      #- $volume_path/db-scripts:/docker-entrypoint-initdb.d
       - type: bind
         source: /home/g2393946/postgresData
         target: /var/lib/postgresql/data
