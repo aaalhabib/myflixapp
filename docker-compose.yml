@@ -111,7 +111,7 @@ services:
       #   source: /home/g2393946/postgresData
       #   target: /var/lib/postgresql/data
     environment:
-     - POSTGRES_MULTIPLE_DATABASES=flix_users_ms,flix_payments_ms,flix_videos_ms,flix_rates_ms,flix_watches_ms
+     - POSTGRES_MULTIPLE_DATABASES=users_ms,payment_ms,videos_ms,rates_ms,watches_ms
   web:
     build: ./ 
     ports:
