@@ -113,7 +113,7 @@ services:
     environment:
      - POSTGRES_MULTIPLE_DATABASES=flix_users_ms,flix_payments_ms,flix_videos_ms,flix_rates_ms,flix_watches_ms
   web:
-    build: nginx:stable-alpine 
+    image: nginx:stable-alpine 
     ports:
       - "80:80"
     volumes:
