@@ -107,9 +107,9 @@ services:
       - "5432:5432"
     volumes:
       - $volume_path/db-scripts:/docker-entrypoint-initdb.d
-      - type: bind
-        source: /home/g2393946/postgresData
-        target: /var/lib/postgresql/data
+      # - type: bind
+      #   source: /home/g2393946/postgresData
+      #   target: /var/lib/postgresql/data
     environment:
      - POSTGRES_MULTIPLE_DATABASES=flix_users_ms,flix_payments_ms,flix_videos_ms,flix_rates_ms,flix_watches_ms
   web:
