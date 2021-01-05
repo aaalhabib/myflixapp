@@ -12,7 +12,7 @@
     "@feathersjs/client": "^4.4.3",
     "@feathersjs/feathers": "^4.4.3",
     "@feathersjs/rest-client": "^4.4.3",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "core-js": "^3.4.4",
     "moment": "^2.24.0",
     "vue": "^2.6.10",
